@@ -16,28 +16,63 @@ from tkextrafont import Font
 configdb = TinyDB(r'settings.json', sort_keys=True, indent=4, separators=(',', ': '))
 db = TinyDB(r'accounts.json', sort_keys=True, indent=4, separators=(',', ': '))
 applist = list(give_appnames())
-
-url1 = "https://github.com/karimawii/Guava/raw/master/assets/fonts/Nexa%20Bold.ttf"
-url2 = "https://github.com/karimawii/Guava/raw/master/assets/fonts/Nexa%20Light.ttf"
-url3 = "https://github.com/karimawii/Guava/raw/master/assets/fonts/Quicksand-Medium.ttf"
-url4 = "https://github.com/karimawii/Guava/raw/master/assets/fonts/Quicksand-SemiBold.ttf"
-url5 = "https://github.com/karimawii/Guava/raw/master/assets/image_recog/playbtn.png"
-url6 = "https://github.com/karimawii/Guava/raw/master/assets/image_recog/riotlogo.png"
-url7 = "https://github.com/karimawii/Guava/raw/master/assets/sounds/error.mp3"
-url8 = "https://github.com/karimawii/Guava/raw/master/assets/sounds/notif.mp3"
-url9 = "https://github.com/karimawii/Guava/raw/master/assets/sounds/success.mp3"
-
-response = wget.download(url1, "Nexa Bold.ttf")
-response = wget.download(url2, "Nexa Light.ttf")
-response = wget.download(url3, "Quicksand-Medium.ttf")
-response = wget.download(url4, "Quicksand-SemiBold.ttf")
-response = wget.download(url5, "playbtn.png")
-response = wget.download(url6, "riotlogo.png")
-response = wget.download(url7, "error.mp3")
-response = wget.download(url8, "notif.mp3")
-response = wget.download(url9, "success.mp3")
-
 accounts = Query()
+
+url1 = "https://drive.google.com/uc?export=download&id=1YLJMURfcO4yPTxCW2lmhr7Pkxba8jM1D"
+url2 = "https://drive.google.com/uc?export=download&id=1SHejgNbp5LsFANrSffr4hCaaBtuPmzvJ"
+url3 = "https://drive.google.com/uc?export=download&id=1CZgsRY3BPtGChEWCwINiULvQO2yQKa4A"
+url4 = "https://drive.google.com/uc?export=download&id=1d66qqUIYdqWKCICTw8lABV2SoRPVb5sg"
+url5 = "https://drive.google.com/uc?export=download&id=1n774SKKjA8VtGZkYflb98UUs21QTwlnx"
+url6 = "https://drive.google.com/uc?export=download&id=1ktFA5obTGVxhRJ5vvIHfWUFB0WtmMAbi"
+url7 = "https://drive.google.com/uc?export=download&id=1pHi8rjcw9gOVLZX_RGwqmbrpOa3BzmCV"
+url8 = "https://drive.google.com/uc?export=download&id=1kC6IDFBEyZQ7URAvqGGEcN4s_gq8TEog"
+url9 = "https://drive.google.com/uc?export=download&id=18uT0ygBO46rziwWsBA-3MGnoDjZcMMHj"
+
+if os.path.isfile(r'Nexa Bold.ttf') == False:
+    response = wget.download(url1, r"Nexa Bold.ttf")
+else:
+    pass
+
+if os.path.isfile(r'Nexa Light.ttf') == False:
+    response = wget.download(url2, r"Nexa Light.ttf")
+else:
+    pass
+
+if os.path.isfile(r'Quicksand-Medium.ttf') == False:
+    response = wget.download(url3, r"Quicksand-Medium.ttf")
+else:
+    pass
+
+if os.path.isfile(r'Quicksand-SemiBold.ttf') == False:
+    response = wget.download(url4, r"Quicksand-SemiBold.ttf")
+else:
+    pass
+
+if os.path.isfile(r'playbtn.png') == False:
+    response = wget.download(url5, r"playbtn.png")
+else:
+    pass
+
+if os.path.isfile(r'riotlogo.png') == False:
+    response = wget.download(url6, r"riotlogo.png")
+else:
+    pass
+
+if os.path.isfile(r'error.mp3') == False:
+    response = wget.download(url7, r"error.mp3")
+else:
+    pass
+
+if os.path.isfile(r'notif.mp3') == False:
+    response = wget.download(url8, r"notif.mp3")
+else:
+    pass
+
+if os.path.isfile(r'success.mp3') == False:
+    response = wget.download(url9, r"success.mp3")
+else:
+    pass
+
 
 
 def centerwind(win):
