@@ -1,0 +1,19 @@
+{
+    "_default": {
+        "1": {
+            "disable_startup_msg": "true"
+        },
+        "2": {
+            "always_showpass": "true"
+        },
+        "3": {
+            "exit_after_login": "true"
+        },
+        "4": {
+            "copy_format_type": "discord"
+        },
+        "5": {
+            "copy_format": "```\nUsername: %u%\nPassword: %p%\n```"
+        }
+    }
+}
