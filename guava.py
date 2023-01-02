@@ -6,15 +6,36 @@ import webbrowser
 import easygui
 import shutil
 from tkinter import *
+import wget
 import pyperclip as ppc
 from ahk import AHK
 from AppOpener import give_appnames, run
 from tinydb import Query, TinyDB
 from tkextrafont import Font
 
-configdb = TinyDB(r'data\settings.json', sort_keys=True, indent=4, separators=(',', ': '))
-db = TinyDB(r'data\accounts.json', sort_keys=True, indent=4, separators=(',', ': '))
+configdb = TinyDB(r'settings.json', sort_keys=True, indent=4, separators=(',', ': '))
+db = TinyDB(r'accounts.json', sort_keys=True, indent=4, separators=(',', ': '))
 applist = list(give_appnames())
+
+url1 = "https://github.com/karimawii/Guava/raw/master/assets/fonts/Nexa%20Bold.ttf"
+url2 = "https://github.com/karimawii/Guava/raw/master/assets/fonts/Nexa%20Light.ttf"
+url3 = "https://github.com/karimawii/Guava/raw/master/assets/fonts/Quicksand-Medium.ttf"
+url4 = "https://github.com/karimawii/Guava/raw/master/assets/fonts/Quicksand-SemiBold.ttf"
+url5 = "https://github.com/karimawii/Guava/raw/master/assets/image_recog/playbtn.png"
+url6 = "https://github.com/karimawii/Guava/raw/master/assets/image_recog/riotlogo.png"
+url7 = "https://github.com/karimawii/Guava/raw/master/assets/sounds/error.mp3"
+url8 = "https://github.com/karimawii/Guava/raw/master/assets/sounds/notif.mp3"
+url9 = "https://github.com/karimawii/Guava/raw/master/assets/sounds/success.mp3"
+
+response = wget.download(url1, "Nexa Bold.ttf")
+response = wget.download(url2, "Nexa Light.ttf")
+response = wget.download(url3, "Quicksand-Medium.ttf")
+response = wget.download(url4, "Quicksand-SemiBold.ttf")
+response = wget.download(url5, "playbtn.png")
+response = wget.download(url6, "riotlogo.png")
+response = wget.download(url7, "error.mp3")
+response = wget.download(url8, "notif.mp3")
+response = wget.download(url9, "success.mp3")
 
 accounts = Query()
 
@@ -42,25 +63,25 @@ def findapp(appname:str):
     strippedlist = str(applist).replace('[','').replace(']','').replace("'",'').replace(',','\n').replace(' ','')
 
     try:
-        os.remove(r'data\apps.txt')
+        os.remove(r'apps.txt')
     except:
         pass
 
-    with open(r'data\apps.txt','w') as apps:
+    with open(r'apps.txt','w') as apps:
         apps.write(strippedlist)
         apps.close()
 
-    with open(r'data\apps.txt','r') as apps:
+    with open(r'apps.txt','r') as apps:
         finalapplist = apps.readlines()
         apps.close()
 
     ppc.copy(finalapplist[86])
     for i in range(len(finalapplist)):
         if finalapplist[i].replace('\n','') == appname:
-            os.remove(r'data\apps.txt')
+            os.remove(r'apps.txt')
             return True
 
-    os.remove(r'data\apps.txt')
+    os.remove(r'apps.txt')
     return False
 
 root = Tk()
@@ -81,10 +102,10 @@ sidebar = Frame(root, width=73,height=501,bg="#1E1E1E")
 
 cwd = os.path.dirname(os.path.realpath(__file__))
 
-font1 = Font(file=cwd+r'\assets\fonts\Nexa Bold.ttf', family="Nexa")
-font2 = Font(file=cwd+r'\assets\fonts\Nexa Light.ttf', family="Nexa")
-font3 = Font(file=cwd+r'\assets\fonts\Quicksand-Medium.ttf', family="Quicksand")
-font4 = Font(file=cwd+r'\assets\fonts\Quicksand-SemiBold.ttf', family="Quicksand")
+font1 = Font(file='Nexa Bold.ttf', family="Nexa")
+font2 = Font(file='Nexa Light.ttf', family="Nexa")
+font3 = Font(file='Quicksand-Medium.ttf', family="Quicksand")
+font4 = Font(file='Quicksand-SemiBold.ttf', family="Quicksand")
 
 #fonts
 
@@ -122,9 +143,9 @@ addhoverlbl = PhotoImage(data='iVBORw0KGgoAAAANSUhEUgAAADgAAAAaCAYAAADi4p8jAAAAC
 infohoverlbl = PhotoImage(data='iVBORw0KGgoAAAANSUhEUgAAADgAAAAaCAYAAADi4p8jAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAANQSURBVHgB3ZhdSFNhGMf/52ydLCeNJE0MMkPopppdNaR0kBcqoUIY1EVi1FWm3ikYGRV5l1Z3EthNkDcZYd4Yc4rYlQ4jCM21oDCNZOKmMNw5Pc9rZ003F/sQN39wOOf9Opz/eT7eD2CXI0VrfG23mBUDamCQSwGtDBrMNMKMncdJn06X6qgqcfZG6xhRIAvLyJCb1IDWnCKCouGWZam3wjpxL1JjmMBBu6VAVSQ7PRYgvXD7/Zqt1uZ0h1ZuEDhgt1iwh8SlvtW2wkOhZCO3deoVQYHCcnukyTQWp+MhSxbrlpT1WuGW6S+OMSukhfMIF4TAwbEzdxFnzM3P+RErPKan+ztab81g6N1vbAMFRgXN/CAEqtDqEQdTk140XPqE2enVmMY9aHNhfGQJuYcV+LwqtgMZUhNb0TgwZqlHghlzxRuIqb9rZhU3buej5nIOthGzQUGNkbTyJI5k8JEsOju9Aut5M14+n8P8Tz9y8xTcbDqCTJNBCBsf8QT7+ujHXKjMFn18ywH09y2IeubsuQMor8oW4+KFRpYaNU2zSBKSwtTEMt70/cL7wUWcKjZRjlYoxhbF/2tpPyo+foja8Feg68sqjhftF+XWxhkhsrzyILwkvOfJD/GezmdFCYiUyowkzoIkwlZpf1QorKLD8dZC9+q6Q+KqKpkkq+YL6zGPH34T4p72ngiOq67LQWP9Z/S/WsDV63mIE7OMJMMfGCouRySS6DHKrnuSLB46rrBon6jjtgQQAj3YYdglQ8XpmMg1fTEmsM2khECeLj6MLm2oY5edpRiNJDwGnDIlGQd2GI4xnvzvt7ooUXlFzOpJ50pD3PFHaE5ZUjGMOGEX4gyXmbWe5XLz9oZlPK5jC4XCcWkyGYNljrU7nYUi3tpIGC8EGM6gCVrQIYlNrSJ9pUJKrEP1pV+Cwhg3ZetjMq26PaqqdSNF2JyF44WWny/4LqaJtTV00c2N3YP7Yomzgx+EQLaiLGs2pEBGTRiN9oPrWgTBib7CyhvENBdJ4iDRsYX137FF+JnMOO3s1TQ9k5E3imO2XGa/HbV00GnVNaS6ULKaqmndayZ01RY7w7zvv/sI3i9qGsqo6+lkL8zjQrghh5E0jIDq8GehP5IwnT9rT0x064m7/gAAAABJRU5ErkJggg==')
 settingshoverlbl = PhotoImage(data='iVBORw0KGgoAAAANSUhEUgAAADgAAAAaCAYAAADi4p8jAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAARjSURBVHgB3VhbSFRdFF7njM3fZYaGfjSD4Df/jCC0GZ8cpFLoIYvSoAzqoRv01P3JKKioyLeuLxWZLwYJkRWTRYWpiD7lUASBZRaFaRQnGouGnNP6lu65njMSdJnpgwP77L3P3utb69tr732I/nJo6RqvtXk9TgfVkENfQmRWkEke/sJDfx5BNp2fSPuK8mBjuo6WBEFs8mR9V2TU3J0hhNJhQNe1xir/w8NWjSkEW9u8BRGn1sbFAsouDITDZuXqyuBAfGUCwUCb10uTmFzmR80OBi+lSpZtUFVECUrkJmm9WUxOweBI+lQkdVUrssx+coDHyVyQR/AiBFu7Sg9S9q25dCjIcdJuFESigS7fC7IhOPJplEKhUZo5y0k/CxhzmttBvxiQ6hw90OXdRBbkYETd9j6qXfaItqx5Ik/TxcEJRx0aDFNPx8eEunu33tMIOwno7/siY/4GeBxOqmGJYhNPRXenQcNsbPPtEkSY9uz/T97jATJwRDwe936ilubhhLoTx15RaLxfYdEUOtM4P2U+q7GS6+PbUR5KsicZrJElOaZpejWL7R4f57EslZSKfS55VNuJYy8lGsDS5TNo267ZdJ2JnT/1RupWlPfS8TNFtG9Hn7xDAUurZtD6rbNEGc13SiSy15vfxYhwlOv5m+JSV8oc/sXTuf8HcXZPh0HnTr+hmflOGn4bpm07Z1MZt6dCq8hhcl6LFjb6XxkQhoFY2SKPTAJcbhikEp+b6s8WiSFH9/WLfDew8UA3SxQRx7qFAiBJGI7oYT0ruaroHOdx0BeEQBoEMQecC0cAF06/jtoGu6rX5lLNujwZAyRt4Mmxa8GEl64uoJ7Oj2ywwZF5zWVDDAcBtD9iOQIwWHl6mssR/V7exxWg1BAKJcoQ9aovHAnjlZOgAIVVa/Oo5cpYtItL3aKWF8++JDjejqCBgl2PskXT5QGBHZueihQB/2JPVLJiaP7Py7IKn+OcMRJXrq7NFZvgfDh+aPCrRNMK2AcNqwZ8CNmphYykA80jQvAYogpSIPm873OCASgnJ4zhCRJCMjAHkpWScVNDLIMfqeuPEt2wNV+I2iCoc5Jpt2qprs3jjBiSNYiEcT/wgQ7UF0obooj1pNqwLShpFhZNlYy5mdsU6Zp1uVTHyUbJLybjfxL2V5c7tmIwB3If5sBY+dxX4f95U0VNqG9qeBtVVSrMoBbo4H3QoV2y6ZF2o/8Vh4Dk8RXutr6nG7wGGzgvKCC66ec2N2tyqXVqOMlk1DkUax7biSIAMns5wZXZJ5RkDLC65sgOeLPTe4gvjQcpw4AI9j8by86Fc6f80PEuQubhleXBQ0JwPIq99PccuCV6KMhtgu9Ohq6blWSTUbMKJh+yx7gIovfBKj8uiFlOksmRxr8t/LHfFqn/ZLr5Zh/J0n8yeiI5wPa34Xji2UiZTpSjFjHNU99cdHK1L5iiPm2i73FfNE2q4K4L7Q7mvxUiQywj7QGNRtrDbmqxIqbwHWFdIRTP75uEAAAAAElFTkSuQmCC')
 accountsiconbg = PhotoImage(data='iVBORw0KGgoAAAANSUhEUgAAAEkAAABJCAYAAABxcwvcAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAACnSURBVHgB7dABAcAgEAAhtzTfv6A20AsAEfhmZi+u/sWTpEBSICmQFEgKJAWSAkmBpEBSICmQFEgKJAWSAkmBpEBSICmQFEgKJAWSAkmBpEBSICmQFEgKJAWSAkmBpEBSICmQFEgKJAWSAkmBpEBSICmQFEgKJAWSAkmBpEBSICmQFEgKJAWSAkmBpEBSICmQFEgKJAWSAkmBpEBSICmQFEgKJAWSggON7wIJd2Y2ZQAAAABJRU5ErkJggg==')
-mp3path = r'assets\sounds\success.mp3'
-errormp3path = r'assets\sounds\error.mp3'
-notifmp3path = r'assets\sounds\notif.mp3'
+mp3path = r'success.mp3'
+errormp3path = r'error.mp3'
+notifmp3path = r'notif.mp3'
 
 #toplevel assets
 cancelbtnicon = PhotoImage(data='iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAC1SURBVHgB7ZTBDcMgDEUNLJKOkg0QeyKxQUYpiwCtD70gHPylKkok3jE4/0WODdFicXeMdBBCeBtjqJSyp5QyKfDeb9bag9+LMb5GNXaSsTnnDg4ivey0VhTWWvfWWtZIO1nmrki1YkuloL69mhq1cBaIylRCKZifozK1cCT9/l9CZZBwICVUxszW4u+ohYOWZgL29Mf9hubStbh08ZEgpFYcGuSr+ay/e8VcOkc9DJ10sXgwH1tO18TpQg4aAAAAAElFTkSuQmCC')
@@ -1055,7 +1076,7 @@ def settings():
                             fetch()
                         
                         def btn2click():
-                            shutil.copyfile(restorefilepath,r'data\accounts.json')
+                            shutil.copyfile(restorefilepath,r'accounts.json')
                             notemsg = 'Accounts replaced successfully!'
                             note(notemsg)
                             msgbwind.destroy()
@@ -1134,7 +1155,7 @@ def settings():
             elif copies == 0:
                 bkpname = r'\backup.json'
 
-            shutil.copyfile(r'data\accounts.json',backupdirpath+bkpname)
+            shutil.copyfile(r'accounts.json',backupdirpath+bkpname)
             notemsg = 'Accounts backuped successfully!'
             note(notemsg)
             return
@@ -1452,7 +1473,7 @@ def login(event):
                 if found == 1:
                     root.update()
                     time.sleep(0.5)
-                    riotlogo = ahk.image_search(image_path=r'assets\image_recog\riotlogo.png',
+                    riotlogo = ahk.image_search(image_path=r'riotlogo.png',
                     color_variation=70,upper_bound= [riotwinX,riotwinY],lower_bound = [riotwinX2,riotwinY2])
                     if riotlogo != None:
                         #username
@@ -1478,7 +1499,7 @@ def login(event):
                     root.update()
                     time.sleep(0.5)
 
-                    playbtn = ahk.image_search(image_path=r'assets\image_recog\playbtn.png',
+                    playbtn = ahk.image_search(image_path=r'playbtn.png',
                     color_variation=70,upper_bound= [riotwinX,riotwinY],lower_bound = [riotwinX2,riotwinY2])
 
                     if playbtn != None:
