@@ -1,15 +1,17 @@
 import ctypes
 import os
+import shutil
 import threading
 import time
 import webbrowser
-import easygui
-import shutil
+from sys import exit
 from tkinter import *
-import wget
+import easygui
 import pyperclip as ppc
+import wget
 from ahk import AHK
 from AppOpener import give_appnames, run
+from notifypy import Notify
 from tinydb import Query, TinyDB
 from tkextrafont import Font
 
@@ -18,8 +20,13 @@ db = TinyDB(r'accounts.json', sort_keys=True, indent=4, separators=(',', ': '))
 applist = list(give_appnames())
 accounts = Query()
 
+if configdb.contains(Query().running == 'true') == True:
+    exit()
+else:
+    configdb.upsert({'running':'true'}, Query().running.exists())
+
 url1 = "https://drive.google.com/uc?export=download&id=1YLJMURfcO4yPTxCW2lmhr7Pkxba8jM1D"
-url2 = "https://drive.google.com/uc?export=download&id=1SHejgNbp5LsFANrSffr4hCaaBtuPmzvJ"
+url2 = "https://drive.google.com/uc?export=download&id=1SHejgNbp5LsFANrSffr4hCaaBtuPmzvJ" 
 url3 = "https://drive.google.com/uc?export=download&id=1CZgsRY3BPtGChEWCwINiULvQO2yQKa4A"
 url4 = "https://drive.google.com/uc?export=download&id=1d66qqUIYdqWKCICTw8lABV2SoRPVb5sg"
 url5 = "https://drive.google.com/uc?export=download&id=1n774SKKjA8VtGZkYflb98UUs21QTwlnx"
@@ -27,6 +34,16 @@ url6 = "https://drive.google.com/uc?export=download&id=1ktFA5obTGVxhRJ5vvIHfWUFB
 url7 = "https://drive.google.com/uc?export=download&id=1pHi8rjcw9gOVLZX_RGwqmbrpOa3BzmCV"
 url8 = "https://drive.google.com/uc?export=download&id=1kC6IDFBEyZQ7URAvqGGEcN4s_gq8TEog"
 url9 = "https://drive.google.com/uc?export=download&id=18uT0ygBO46rziwWsBA-3MGnoDjZcMMHj"
+url10 = "https://drive.google.com/uc?export=download&id=1ihEH4AyRz-Xj2G1ZwZmEB-5NtKGBNC8W"
+
+if os.path.isfile(r'guavaicon.ico') == False:
+    response = wget.download(url10, r"guavaicon.ico")
+    notification = Notify()
+    notification.title = "Installing Assets"
+    notification.message = "Installing Important Data For The First Time, Please Wait!"
+    notification.icon = "guavaicon.ico"
+    notification.application_name = "Guava"
+    notification.send()
 
 if os.path.isfile(r'Nexa Bold.ttf') == False:
     response = wget.download(url1, r"Nexa Bold.ttf")
@@ -74,6 +91,9 @@ else:
     pass
 
 
+if configdb.contains(Query().copy_format_type == 'discord') == False and configdb.contains(Query().copy_format_type == 'plain') == False and configdb.contains(Query().copy_format_type == 'custom') == False:
+    configdb.insert({'copy_format_type':'discord'})
+    configdb.insert({'copy_format':'```\nUsername: %u%\nPassword: %p%\n```'})
 
 def centerwind(win):
     """
@@ -130,6 +150,7 @@ root.iconphoto(True, guavaicon)
 myappid = 'karimawi.guava.version.1.0' # arbitrary string
 ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(myappid)
 centerwind(root)
+root.lift()
 
 sidebar = Frame(root, width=73,height=501,bg="#1E1E1E")
 
@@ -1546,6 +1567,7 @@ def login(event):
                         if leaguewin.exist:
                             note('Logged in successfully!')
                             if configdb.contains(Query().exit_after_login == 'true') == True:
+                                configdb.upsert({'running':'false'}, Query().running.exists())
                                 exit()
                             else:
                                 configdb.upsert({'exit_after_login':'false'}, Query().exit_after_login.exists())
@@ -1800,4 +1822,10 @@ if lstbx.size() != 0:
 else:
     pass
 
+def on_closing():
+    configdb.upsert({'running':'false'}, Query().running.exists())
+    exit()
+
+root.protocol("WM_DELETE_WINDOW", on_closing)
+ 
 root.mainloop()
