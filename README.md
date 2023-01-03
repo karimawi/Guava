@@ -22,6 +22,7 @@
   <br/>
   <br/>
   <a href="#features">Features</a> |
+  <a href="#faq">FAQ</a> |
   <a href="#installation">Installation</a> |
   <a href="#libraries">Libraries</a>
   </p>
@@ -40,6 +41,16 @@
   
 **Everything is locally stored on your device, you can take a look at the code.**
 
+<br/>
+<br/>
+
+## FAQ
+
+**Does Guava Support Valorant?** <br/>
+Unfortunately, my pc (which is a laptop) is really crap, I can't install or run the game, and I can't do it without having the game even if both games have the same client, some elements are different, like the Valorant Riot Client is all red, also I would want to kill existing processes of the game and for that I'd need to actually run it to get all of the processes names, tl;dr I'll add it once I have proper testing setup for it, whether I upgrade my device or use someone else's, but until that, Guava just supports League of Legends.
+
+**Is Guava secure?** <br/>
+As far as the code goes, there's nothing malicious, you can check it for yourself or ask someone who knows if you don't know how, as far as getting banned in game or smth like that, don't worry, it's far from possible to get banned from something like an account switcher, it does read your screen and is a script so you'd wonder it would get detected by league and you get banned, but the image recognition part pretty much ends after the main client opens, and if you want you can also set Guava to exit itself after logging in.
 <br/>
 <br/>
 
