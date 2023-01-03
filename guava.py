@@ -9,6 +9,7 @@ from tkinter import *
 import easygui
 import pyperclip as ppc
 import wget
+import subprocess
 from ahk import AHK
 from AppOpener import give_appnames, run
 from notifypy import Notify
@@ -1453,7 +1454,7 @@ def settings():
     Ctab_btn = Button(settwindow,bg='#535353',fg='#767373',borderwidth=0,activebackground='#535353'
     ,text='Copy',font=('Nexa Bold',9),justify=CENTER,activeforeground='#767373',command=copytab)
 
-    copytab()
+    generaltab()
     Gtab_btn.place(x=35,y=16)
     Dtab_btn.place(x=128,y=16)
     Ctab_btn.place(x=128+83,y=16)
@@ -1483,23 +1484,28 @@ def login(event):
         lstbx.config(state=DISABLED,cursor='no')
         note('Logging in...!')
 
-        os.system("taskkill /f /im  RiotClientCrashHandler.exe")
-        os.system("taskkill /f /im  RiotClientCrashHandler.exe")
-        os.system("taskkill /f /im  RiotClientServices.exe")
-        os.system("taskkill /f /im  RiotClientServices.exe")
-        os.system("taskkill /f /im  RiotClientUx.exe")
-        os.system("taskkill /f /im  RiotClientUx.exe")
-        os.system("taskkill /f /im  RiotClientUxRender.exe")
-        os.system("taskkill /f /im  RiotClientUxRender.exe")
-        os.system("taskkill /f /im  LeagueClient.exe")
-        os.system("taskkill /f /im  LeagueClient.exe")
-        os.system("taskkill /f /im  LeagueClientUx.exe")
-        os.system("taskkill /f /im  LeagueClientUx.exe")
+        si = subprocess.STARTUPINFO()
+        si.dwFlags |= subprocess.STARTF_USESHOWWINDOW
+
+        subprocess.call("taskkill /f /im  RiotClientCrashHandler.exe", startupinfo=si)
+        subprocess.call("taskkill /f /im  RiotClientCrashHandler.exe", startupinfo=si)
+        subprocess.call("taskkill /f /im  RiotClientServices.exe", startupinfo=si)
+        subprocess.call("taskkill /f /im  RiotClientServices.exe", startupinfo=si)
+        subprocess.call("taskkill /f /im  RiotClientUx.exe", startupinfo=si)
+        subprocess.call("taskkill /f /im  RiotClientUx.exe", startupinfo=si)
+        subprocess.call("taskkill /f /im  RiotClientUxRender.exe", startupinfo=si)
+        subprocess.call("taskkill /f /im  RiotClientUxRender.exe", startupinfo=si)
+        subprocess.call("taskkill /f /im  LeagueClient.exe", startupinfo=si)
+        subprocess.call("taskkill /f /im  LeagueClient.exe", startupinfo=si)
+        subprocess.call("taskkill /f /im  LeagueClientUx.exe", startupinfo=si)
+        subprocess.call("taskkill /f /im  LeagueClientUx.exe", startupinfo=si)
 
         if findapp('league of legends') == True:
             run('league of legends')
 
             found = 0
+            done = 0
+            logged_in = 0
 
             for i in range(60):
                 root.update()
@@ -1566,20 +1572,23 @@ def login(event):
                         leaguewin = ahk.win_get(title = "League of Legends")
                         if leaguewin.exist:
                             note('Logged in successfully!')
-                            if configdb.contains(Query().exit_after_login == 'true') == True:
-                                configdb.upsert({'running':'false'}, Query().running.exists())
-                                exit()
-                            else:
-                                configdb.upsert({'exit_after_login':'false'}, Query().exit_after_login.exists())
-                                pass
+                            done = 1
                             break
                         else:
                             break
                     except:
                         pass
-                    
                 else:
                     break
+            if done == 1:
+                if configdb.contains(Query().exit_after_login == 'true') == True:
+                    configdb.upsert({'running':'false'}, Query().running.exists())
+                    exit()
+                else:
+                    configdb.upsert({'exit_after_login':'false'}, Query().exit_after_login.exists())
+                    pass
+            else:
+                pass
         else:
             note('Game Not Found!','red')
 
