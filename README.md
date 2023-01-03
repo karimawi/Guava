@@ -61,8 +61,12 @@ you can then find the .msi installer.
 
 as for manual installation, just download the source code, install the modules and run the Python file.
 
+<br/>
+
 > ⚠ This project is made to work for Windows computers, it will not work as intended on any other OS.<br/>
-> ⚠ Guava is still in beta, it's expected to have a lot of bugs, please let me know if you encounter any by [opening an issue](https://github.com/karimawii/Guava/issues/new/choose)
+<br/>
+
+> ⚠ Guava is still in beta, it's expected to have some bugs, please let me know if you encounter any by [opening an issue](https://github.com/karimawii/Guava/issues/new/choose)
 
 <br/>
 <br/>
