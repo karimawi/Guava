@@ -2,6 +2,9 @@
 <br/>
 
 <p align="center">
+  <a href="#" target="_blank">
+    <img src="https://img.shields.io/badge/Version-1.0.0%20--%20Beta-yellow?labelColor=1E1E1E&color=B5C531&style=for-the-badge" alt="Version"/>
+    </a>
   <a href="https://discord.com/users/609230785769111554" target="_blank">
     <img src="https://img.shields.io/badge/Discord-Profile-Yellow?labelColor=1E1E1E&color=B5C531&style=for-the-badge&logo=discord&logoColor=B5C531" alt="Chat"/>
     </a>
@@ -47,7 +50,8 @@ you can then find the .msi installer.
 
 as for manual installation, just download the source code, install the modules and run the Python file.
 
-> ⚠ This project is made to work for Windows computers, I did not test this on any other OS.
+> ⚠ This project is made to work for Windows computers, it will not work as intended on any other OS.<br/>
+> ⚠ Guava is still in beta, it's expected to have a lot of bugs, please let me know if you encounter any by [opening an issue](https://github.com/karimawii/Guava/issues/new/choose)
 
 <br/>
 <br/>
