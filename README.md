@@ -73,9 +73,11 @@ GUI:
 - [Tkitner](https://github.com/python/cpython/tree/main/Lib/tkinter)
 - [TkExtraFont](https://github.com/TkinterEP/python-tkextrafont)
 - [EasyGUI](https://github.com/robertlugg/easygui)
+- [notify-py](https://github.com/ms7m/notify-py)
 
 DB:
 - [TinyDB](https://github.com/msiemens/tinydb)
+- [wget](https://github.com/steveeJ/python-wget)
 
 User Input Simulation:
 - [AHK Python Wrapper](https://github.com/spyoungtech/ahk)
