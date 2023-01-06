@@ -43,12 +43,12 @@ url8 = "https://drive.google.com/uc?export=download&id=1kC6IDFBEyZQ7URAvqGGEcN4s
 url9 = "https://drive.google.com/uc?export=download&id=18uT0ygBO46rziwWsBA-3MGnoDjZcMMHj"
 url10 = "https://drive.google.com/uc?export=download&id=1ihEH4AyRz-Xj2G1ZwZmEB-5NtKGBNC8W"
 
-if os.path.isfile(r'AutoHotkey.exe') == False:
-    response = wget.download(url0, r"AutoHotkey.exe")
-else:
-    pass
+# if os.path.isfile(r'AutoHotkey.exe') == False:
+#     response = wget.download(url0, r"AutoHotkey.exe")
+# else:
+#     pass
 
-AHK(executable_path = cwd+r"\AutoHotkey.exe")
+# AHK(executable_path = cwd+r"\AutoHotkey.exe")
 
 if os.path.isfile(r'guavaicon.ico') == False:
     response = wget.download(url10, r"guavaicon.ico")
