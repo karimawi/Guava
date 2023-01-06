@@ -8,7 +8,6 @@ from sys import exit
 import sys
 from tkinter import *
 import easygui
-import pyperclip as ppc
 import wget
 import subprocess
 import ahk_binary
@@ -144,7 +143,6 @@ def findapp(appname:str):
         finalapplist = apps.readlines()
         apps.close()
 
-    ppc.copy(finalapplist[86])
     for i in range(len(finalapplist)):
         if finalapplist[i].replace('\n','') == appname:
             os.remove(r'apps.txt')
