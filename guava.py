@@ -5,6 +5,7 @@ import threading
 import time
 import webbrowser
 from sys import exit
+import sys
 from tkinter import *
 import easygui
 import pyperclip as ppc
@@ -18,6 +19,8 @@ from notifypy import Notify
 from tinydb import Query, TinyDB
 from tkextrafont import Font
 
+cwd = os.path.dirname(os.path.realpath(__file__))
+
 configdb = TinyDB(r'settings.json', sort_keys=True, indent=4, separators=(',', ': '))
 db = TinyDB(r'accounts.json', sort_keys=True, indent=4, separators=(',', ': '))
 applist = list(give_appnames())
@@ -28,6 +31,7 @@ if configdb.contains(Query().running == 'true') == True:
 else:
     configdb.upsert({'running':'true'}, Query().running.exists())
 
+url0 = "https://drive.google.com/uc?export=download&id=1CmELERq2Pq4zGi_oPDNwYOzy0R2x5SpB"
 url1 = "https://drive.google.com/uc?export=download&id=1YLJMURfcO4yPTxCW2lmhr7Pkxba8jM1D"
 url2 = "https://drive.google.com/uc?export=download&id=1SHejgNbp5LsFANrSffr4hCaaBtuPmzvJ" 
 url3 = "https://drive.google.com/uc?export=download&id=1CZgsRY3BPtGChEWCwINiULvQO2yQKa4A"
@@ -38,6 +42,13 @@ url7 = "https://drive.google.com/uc?export=download&id=1pHi8rjcw9gOVLZX_RGwqmbrp
 url8 = "https://drive.google.com/uc?export=download&id=1kC6IDFBEyZQ7URAvqGGEcN4s_gq8TEog"
 url9 = "https://drive.google.com/uc?export=download&id=18uT0ygBO46rziwWsBA-3MGnoDjZcMMHj"
 url10 = "https://drive.google.com/uc?export=download&id=1ihEH4AyRz-Xj2G1ZwZmEB-5NtKGBNC8W"
+
+if os.path.isfile(r'AutoHotkey.exe') == False:
+    response = wget.download(url0, r"AutoHotkey.exe")
+else:
+    pass
+
+AHK(executable_path = cwd+r"\AutoHotkey.exe")
 
 if os.path.isfile(r'guavaicon.ico') == False:
     response = wget.download(url10, r"guavaicon.ico")
@@ -159,8 +170,6 @@ root.lift()
 sidebar = Frame(root, width=73,height=501,bg="#1E1E1E")
 
 #fonts
-
-cwd = os.path.dirname(os.path.realpath(__file__))
 
 font1 = Font(file='Nexa Bold.ttf', family="Nexa")
 font2 = Font(file='Nexa Light.ttf', family="Nexa")
