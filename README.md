@@ -86,4 +86,3 @@ DB:
 User Input Simulation:
 - [AHK Python Wrapper](https://github.com/spyoungtech/ahk)
 - [AppOpener](https://github.com/athrvvvv/AppOpener)
-- [Pyperclip](https://github.com/asweigart/pyperclip)
