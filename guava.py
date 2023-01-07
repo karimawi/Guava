@@ -8,6 +8,7 @@ from sys import exit
 import sys
 from tkinter import *
 import easygui
+import pyperclip as ppc
 import wget
 import subprocess
 import ahk_binary
@@ -25,7 +26,9 @@ db = TinyDB(r'accounts.json', sort_keys=True, indent=4, separators=(',', ': '))
 applist = list(give_appnames())
 accounts = Query()
 
-if configdb.contains(Query().running == 'true') == True:
+if configdb.contains(Query().running == 'true') == False and configdb.contains(Query().running == 'false') == False:
+    configdb.upsert({'running':'true'}, Query().running.exists())
+elif configdb.contains(Query().running == 'true') == True:
     exit()
 else:
     configdb.upsert({'running':'true'}, Query().running.exists())
