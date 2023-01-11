@@ -66,7 +66,7 @@ as for manual installation, just download the source code, install the modules a
 > ⚠ This project is made to work for Windows computers, it will not work as intended on any other OS.<br/>
 <br/>
 
-> ⚠ Guava is still in beta, it's expected to have some bugs, please let me know if you encounter any by [opening an issue](https://github.com/karimawii/Guava/issues/new/choose)
+> ⚠ Guava is still in beta, it's expected to have some bugs, please let me know if you encounter any by opening an [issue](https://github.com/karimawii/Guava/issues/new/choose)
 
 <br/>
 <br/>
