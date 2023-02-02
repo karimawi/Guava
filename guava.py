@@ -1,3 +1,4 @@
+import AppOpener as app
 import ctypes
 import os
 import shutil
@@ -14,7 +15,6 @@ import subprocess
 import ahk_binary
 from ahk import AHK
 from ahk.directives import NoTrayIcon
-from AppOpener import give_appnames, run
 from notifypy import Notify
 from tinydb import Query, TinyDB
 from tkextrafont import Font
@@ -23,7 +23,7 @@ cwd = os.path.dirname(os.path.realpath(__file__))
 
 configdb = TinyDB(r'settings.json', sort_keys=True, indent=4, separators=(',', ': '))
 db = TinyDB(r'accounts.json', sort_keys=True, indent=4, separators=(',', ': '))
-applist = list(give_appnames())
+applist = list(app.give_appnames())
 accounts = Query()
 
 if configdb.contains(Query().running == 'true') == False and configdb.contains(Query().running == 'false') == False:
@@ -130,7 +130,7 @@ def centerwind(win):
 
 def findapp(appname:str):
     appname = appname.replace(' ','')
-    applist = list(give_appnames())
+    applist = list(app.give_appnames())
     strippedlist = str(applist).replace('[','').replace(']','').replace("'",'').replace(',','\n').replace(' ','')
 
     try:
@@ -1514,7 +1514,7 @@ def login(event):
         subprocess.call("taskkill /f /im  LeagueClientUx.exe", startupinfo=si)
 
         if findapp('league of legends') == True:
-            run('league of legends')
+            app.open('league of legends')
 
             found = 0
             done = 0
