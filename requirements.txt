@@ -7,7 +7,7 @@ appopener==1.6
 astunparse==1.6.3
 async-timeout==4.0.2
 asyncio==3.4.3
-attrs==22.1.0
+attrs==22.2.0
 beautifulsoup4==4.11.1
 cachetools==5.3.0
 cffi==1.15.1
