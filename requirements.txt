@@ -79,7 +79,7 @@ PyAutoGUI==0.9.53
 pycparser==2.21
 PyGetWindow==0.0.9
 pyglet==2.0.1
-Pygments==2.13.0
+Pygments==2.14.0
 PyJWT==2.6.0
 PyMsgBox==1.0.9
 pynput==1.7.6
