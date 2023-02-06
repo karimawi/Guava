@@ -107,7 +107,7 @@ six==1.16.0
 soupsieve==2.3.2.post1
 tendo==0.3.0
 tensorboard==2.11.2
-tensorboard-data-server==0.6.1
+tensorboard-data-server==0.7.0
 tensorboard-plugin-wit==1.8.1
 tensorflow==2.11.0
 tensorflow-estimator==2.11.0
