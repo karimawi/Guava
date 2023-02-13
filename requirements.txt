@@ -59,7 +59,7 @@ msgpack==1.0.4
 mss==7.0.1
 multidict==6.0.2
 nanoid==2.0.0
-notify-py==0.3.38
+notify-py==0.3.42
 notify-run==0.0.15
 notifypy==1.0.3.0
 numpy==1.23.4
