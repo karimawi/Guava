@@ -37,7 +37,7 @@ fuzzywuzzy==0.18.0
 gast==0.4.0
 gmail==0.6.3
 google-auth==2.16.0
-google-auth-oauthlib==0.4.6
+google-auth-oauthlib==1.0.0
 google-pasta==0.2.0
 gratient==0.4
 grpcio==1.51.1
