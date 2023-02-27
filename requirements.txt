@@ -40,7 +40,7 @@ google-auth==2.16.0
 google-auth-oauthlib==1.0.0
 google-pasta==0.2.0
 gratient==0.4
-grpcio==1.51.1
+grpcio==1.51.3
 h5py==3.8.0
 idna==3.4
 importlib-metadata==4.13.0
