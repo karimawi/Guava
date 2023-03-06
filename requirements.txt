@@ -131,7 +131,7 @@ win32-setctime==1.1.0
 winotify==1.1.0
 winsdk==1.0.0b7
 WMI==1.5.1
-wrapt==1.14.1
+wrapt==1.15.0
 wxPython==4.2.0
 yarg==0.1.9
 yarl==1.8.1
