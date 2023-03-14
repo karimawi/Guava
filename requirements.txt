@@ -134,5 +134,5 @@ WMI==1.5.1
 wrapt==1.15.0
 wxPython==4.2.0
 yarg==0.1.9
-yarl==1.8.1
+yarl==1.8.2
 zipp==3.14.0
