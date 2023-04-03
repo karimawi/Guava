@@ -50,7 +50,7 @@ keyboard==0.13.5
 kiwisolver==1.4.4
 libclang==15.0.6.1
 loguru==0.6.0
-Markdown==3.4.1
+Markdown==3.4.3
 MarkupSafe==2.1.2
 matplotlib==3.6.2
 MouseInfo==0.1.3
