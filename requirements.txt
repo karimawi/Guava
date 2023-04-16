@@ -59,7 +59,6 @@ mss==7.0.1
 multidict==6.0.4
 nanoid==2.0.0
 notify-py==0.3.42
-notify-run==0.0.15
 notifypy==1.0.3.0
 numpy==1.24.2
 oauthlib==3.2.2
