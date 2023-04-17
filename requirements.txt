@@ -18,7 +18,7 @@ colorama==0.4.6
 commonmark==0.9.1
 comtypes==1.1.14
 cryptography==39.0.1
-cx-Freeze==6.14.8
+cx-Freeze==6.14.9
 cx-Logging==3.1.0
 cycler==0.11.0
 darkdetect==0.7.1
