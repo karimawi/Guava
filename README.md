@@ -1,7 +1,7 @@
 <h1 align="center"><img src="https://i.imgur.com/v59khn0.png" alt="Guava" width=30 style="vertical-align:top"/> Guava</h1>
 <br/>
 
-> ⚠ **Important Notice:** Please refer to https://github.com/karimawii/Guava/issues/69#issuecomment-1518685416
+> ⚠ **Important Notice:** Please refer to https://github.com/karimawii/Guava/issues/69#issuecomment-1518685416:~:text=I%20really%20spaghettied,new%20cool%20features.
 <br/>
 
 <p align="center">
