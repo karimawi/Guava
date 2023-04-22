@@ -1,6 +1,9 @@
 <h1 align="center"><img src="https://i.imgur.com/v59khn0.png" alt="Guava" width=30 style="vertical-align:top"/> Guava</h1>
 <br/>
 
+> ⚠ **Important Notice:** Please refer to https://github.com/karimawii/Guava/issues/69#issuecomment-1518685416
+<br/>
+
 <p align="center">
   <a href="#" target="_blank">
     <img src="https://img.shields.io/badge/Version-1.0.0%20--%20Beta-yellow?labelColor=1E1E1E&color=B5C531&style=for-the-badge" alt="Version"/>
