@@ -21,7 +21,7 @@ multidict==6.0.4
 nose==1.3.7
 notifypy==1.0.3.0
 pip-conflict-checker==0.6.0
-psutil==5.9.4
+psutil==5.9.5
 pycodestyle==2.10.0
 pyflakes==3.0.1
 PyJWT==2.6.0
