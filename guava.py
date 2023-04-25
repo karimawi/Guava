@@ -1,4 +1,3 @@
-import AppOpener as app
 import ctypes
 import os
 import shutil
@@ -12,7 +11,6 @@ import easygui
 import pyperclip as ppc
 import wget
 import subprocess
-import ahk_binary
 from ahk import AHK
 from ahk.directives import NoTrayIcon
 from notifypy import Notify
@@ -23,15 +21,14 @@ cwd = os.path.dirname(os.path.realpath(__file__))
 
 configdb = TinyDB(r'settings.json', sort_keys=True, indent=4, separators=(',', ': '))
 db = TinyDB(r'accounts.json', sort_keys=True, indent=4, separators=(',', ': '))
-applist = list(app.give_appnames())
 accounts = Query()
 
-if configdb.contains(Query().running == 'true') == False and configdb.contains(Query().running == 'false') == False:
-    configdb.upsert({'running':'true'}, Query().running.exists())
-elif configdb.contains(Query().running == 'true') == True:
-    exit()
-else:
-    configdb.upsert({'running':'true'}, Query().running.exists())
+# if configdb.contains(Query().running == 'true') == False and configdb.contains(Query().running == 'false') == False:
+#     configdb.upsert({'running':'true'}, Query().running.exists())
+# elif configdb.contains(Query().running == 'true') == True:
+#     exit()
+# else:
+#     configdb.upsert({'running':'true'}, Query().running.exists())
 
 url0 = "https://drive.google.com/uc?export=download&id=1CmELERq2Pq4zGi_oPDNwYOzy0R2x5SpB"
 url1 = "https://drive.google.com/uc?export=download&id=1YLJMURfcO4yPTxCW2lmhr7Pkxba8jM1D"
@@ -128,31 +125,31 @@ def centerwind(win):
     win.geometry('{}x{}+{}+{}'.format(width, height, x, y))
     win.deiconify()
 
-def findapp(appname:str):
-    appname = appname.replace(' ','')
-    applist = list(app.give_appnames())
-    strippedlist = str(applist).replace('[','').replace(']','').replace("'",'').replace(',','\n').replace(' ','')
+# def findapp(appname:str):
+#     appname = appname.replace(' ','')
+#     applist = list(app.give_appnames())
+#     strippedlist = str(applist).replace('[','').replace(']','').replace("'",'').replace(',','\n').replace(' ','')
 
-    try:
-        os.remove(r'apps.txt')
-    except:
-        pass
+#     try:
+#         os.remove(r'apps.txt')
+#     except:
+#         pass
 
-    with open(r'apps.txt','w') as apps:
-        apps.write(strippedlist)
-        apps.close()
+#     with open(r'apps.txt','w') as apps:
+#         apps.write(strippedlist)
+#         apps.close()
 
-    with open(r'apps.txt','r') as apps:
-        finalapplist = apps.readlines()
-        apps.close()
+#     with open(r'apps.txt','r') as apps:
+#         finalapplist = apps.readlines()
+#         apps.close()
 
-    for i in range(len(finalapplist)):
-        if finalapplist[i].replace('\n','') == appname:
-            os.remove(r'apps.txt')
-            return True
+#     for i in range(len(finalapplist)):
+#         if finalapplist[i].replace('\n','') == appname:
+#             os.remove(r'apps.txt')
+#             return True
 
-    os.remove(r'apps.txt')
-    return False
+#     os.remove(r'apps.txt')
+#     return False
 
 root = Tk()
 ahk = AHK()
@@ -762,7 +759,7 @@ def openurl(site:str):
     elif site == 'paypal':
         webbrowser.open('https://paypal.me/karimawi', new=0, autoraise=True)
     elif site == 'discord':
-        if findapp('discord') == True:
+        if False == True:
             disurl = 'discord://'
         else:
             disurl = ''
@@ -1513,97 +1510,94 @@ def login(event):
         subprocess.call("taskkill /f /im  LeagueClientUx.exe", startupinfo=si)
         subprocess.call("taskkill /f /im  LeagueClientUx.exe", startupinfo=si)
 
-        if findapp('league of legends') == True:
-            app.open('league of legends')
+        os.startfile(r"D:\Riot Games\League of Legends\LeagueClient.exe")
 
-            found = 0
-            done = 0
-            logged_in = 0
+        found = 0
+        done = 0
+        logged_in = 0
 
-            for i in range(60):
-                root.update()
-                riotwin = ahk.win_get(title = "Riot Client")
-                time.sleep(0.5)
+        for i in range(60):
+            root.update()
+            riotwin = ahk.win_get(title = "Riot Client")
+            time.sleep(0.5)
+            try:
+                if riotwin.exist:
+                    riotwin.activate()
+                    riotwinLoc = riotwin.rect
+                    riotwinX = riotwinLoc[0]
+                    riotwinY = riotwinLoc[1]
+                    riotwinX2 = riotwinX + (riotwinLoc[2] // 2)
+                    riotwinY2 = riotwinY + riotwinLoc[3]
+                    found = 1
+                    break
+            except:
                 try:
-                    if riotwin.exist:
-                        riotwin.activate()
-                        riotwinLoc = riotwin.rect
-                        riotwinX = riotwinLoc[0]
-                        riotwinY = riotwinLoc[1]
-                        riotwinX2 = riotwinX + (riotwinLoc[2] // 2)
-                        riotwinY2 = riotwinY + riotwinLoc[3]
-                        found = 1
+                    leaguewin = ahk.win_get(title = "League of Legends")
+                    if leaguewin.exist:
+                        note('Please log out first!','red')
                         break
                 except:
-                    try:
-                        leaguewin = ahk.win_get(title = "League of Legends")
-                        if leaguewin.exist:
-                            note('Please log out first!','red')
-                            break
-                    except:
-                        pass
                     pass
+                pass
 
-            for i in range(60):
-                if found == 1:
-                    root.update()
-                    time.sleep(0.5)
-                    riotlogo = ahk.image_search(image_path=r'riotlogo.png',
-                    color_variation=70,upper_bound= [riotwinX,riotwinY],lower_bound = [riotwinX2,riotwinY2])
-                    if riotlogo != None:
-                        #username
-                        ahk.mouse_move(riotlogo[0]+55,riotlogo[1]+175,speed=0)
-                        ahk.click()
-                        ahk.type(loginusername)
-                        #password
-                        ahk.mouse_move(riotlogo[0]+55,riotlogo[1]+220,speed=0)
-                        ahk.click()
-                        ahk.type(loginpassw)
-                        #loginbtn
-                        ahk.mouse_move(riotlogo[0]+65,riotlogo[1]+530,speed=0)
-                        ahk.click()
-                        logged_in = 1
+        for i in range(60):
+            if found == 1:
+                root.update()
+                time.sleep(0.5)
+                riotlogo = ahk.image_search(image_path=r'riotlogo.png',
+                color_variation=70,upper_bound= [riotwinX,riotwinY],lower_bound = [riotwinX2,riotwinY2])
+                if riotlogo != None:
+                    #username
+                    ahk.mouse_move(riotlogo[0]+55,riotlogo[1]+175,speed=0)
+                    ahk.click()
+                    ahk.type(loginusername)
+                    #password
+                    ahk.mouse_move(riotlogo[0]+55,riotlogo[1]+220,speed=0)
+                    ahk.click()
+                    ahk.type(loginpassw)
+                    #loginbtn
+                    ahk.mouse_move(riotlogo[0]+65,riotlogo[1]+530,speed=0)
+                    ahk.click()
+                    logged_in = 1
+                    break
+            else:
+                logged_in = 0
+                note('Riot Client window not found','red')
+                break
+
+        for i in range(60):
+            if logged_in == 1:
+                root.update()
+                time.sleep(0.5)
+
+                playbtn = ahk.image_search(image_path=r'playbtn.png',
+                color_variation=70,upper_bound= [riotwinX,riotwinY],lower_bound = [riotwinX2,riotwinY2])
+
+                if playbtn != None:
+                    ahk.mouse_move(playbtn[0]+120,playbtn[1]+23,speed=0)
+                    ahk.click()
+
+                try:
+                    leaguewin = ahk.win_get(title = "League of Legends")
+                    if leaguewin.exist:
+                        note('Logged in successfully!')
+                        done = 1
                         break
-                else:
-                    logged_in = 0
-                    note('Riot Client window not found','red')
-                    break
-
-            for i in range(60):
-                if logged_in == 1:
-                    root.update()
-                    time.sleep(0.5)
-
-                    playbtn = ahk.image_search(image_path=r'playbtn.png',
-                    color_variation=70,upper_bound= [riotwinX,riotwinY],lower_bound = [riotwinX2,riotwinY2])
-
-                    if playbtn != None:
-                        ahk.mouse_move(playbtn[0]+120,playbtn[1]+23,speed=0)
-                        ahk.click()
-
-                    try:
-                        leaguewin = ahk.win_get(title = "League of Legends")
-                        if leaguewin.exist:
-                            note('Logged in successfully!')
-                            done = 1
-                            break
-                        else:
-                            break
-                    except:
-                        pass
-                else:
-                    break
-            if done == 1:
-                if configdb.contains(Query().exit_after_login == 'true') == True:
-                    configdb.upsert({'running':'false'}, Query().running.exists())
-                    exit()
-                else:
-                    configdb.upsert({'exit_after_login':'false'}, Query().exit_after_login.exists())
+                    else:
+                        break
+                except:
                     pass
             else:
+                break
+        if done == 1:
+            if configdb.contains(Query().exit_after_login == 'true') == True:
+                configdb.upsert({'running':'false'}, Query().running.exists())
+                exit()
+            else:
+                configdb.upsert({'exit_after_login':'false'}, Query().exit_after_login.exists())
                 pass
         else:
-            note('Game Not Found!','red')
+            pass
 
         lstbx.config(state=NORMAL,cursor='')
     return
@@ -1845,9 +1839,7 @@ else:
     pass
 
 def on_closing():
-    configdb.upsert({'running':'false'}, Query().running.exists())
+    # configdb.upsert({'running':'false'}, Query().running.exists())
     exit()
-
-root.protocol("WM_DELETE_WINDOW", on_closing)
  
 root.mainloop()
