@@ -1837,9 +1837,5 @@ if lstbx.size() != 0:
         configdb.insert({'disable_startup_msg':'false'})
 else:
     pass
-
-def on_closing():
-    # configdb.upsert({'running':'false'}, Query().running.exists())
-    exit()
  
 root.mainloop()
