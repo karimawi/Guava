@@ -1,7 +1,7 @@
 <h1 align="center"><img src="https://i.imgur.com/v59khn0.png" alt="Guava" width=30 style="vertical-align:top"/> Guava</h1>
 <br/>
 
-> ⚠ **Important Notice:** Please refer to [#69 (comment)](https://github.com/karimawii/Guava/issues/69#issuecomment-1518685416:~:text=I%20really%20spaghettied,new%20cool%20features.)
+> ⚠ **Important Notice:** I wrote this program as a "fun" project to practice some Tkinter for our Python course at uni, didn't think it would get any attention or be actually used by people, so I didn't take the time to write it in an organized/object-oriented manner, it's mostly jank and spaghetti so, it's getting a rewrite as soon as possible, all the known bugs will be fixed, the code would be more readable and organized in more than one file, a handful of QoL features will be added like summoner details, login shortcuts, list reorder and much more, I started, but it's going to take a while, since I'm most of the time either studying for college or in campus, my free time is limited, but I'll try my best. Thanks for using Guava 💛
 <br/>
 
 <p align="center">
