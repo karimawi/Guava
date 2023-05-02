@@ -34,4 +34,4 @@ tkextrafont==0.6.3
 twilio==8.1.0
 urllib3==1.26.15
 wget==3.2
-yarl==1.9.1
+yarl==1.9.2
