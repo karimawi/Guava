@@ -31,7 +31,7 @@ pywin32==306
 requests==2.30.0
 tinydb==4.7.1
 tkextrafont==0.6.3
-twilio==8.1.0
+twilio==8.2.2
 urllib3==2.0.2
 wget==3.2
 yarl==1.9.2
