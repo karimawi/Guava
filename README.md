@@ -1,7 +1,11 @@
 <h1 align="center"><img src="https://i.imgur.com/v59khn0.png" alt="Guava" width=30 style="vertical-align:top"/> Guava</h1>
 <br/>
 
-> ⚠ **Important Notice:** I wrote this program as a "fun" project to practice some Tkinter for our Python course at uni, didn't think it would get any attention or be actually used by people, so I didn't take the time to write it in an organized/object-oriented manner, it's mostly jank and spaghetti so, it's getting a rewrite as soon as possible, all the known bugs will be fixed, the code would be more readable and organized in more than one file, a handful of QoL features will be added like summoner details, login shortcuts, list reorder and much more, I started, but it's going to take a while, since I'm most of the time either studying for college or in campus, my free time is limited, but I'll try my best. Thanks for using Guava 💛
+> ⚠ **[Repository Archived] UPDATE 27th of August 2023:** A couple of days ago Riot Games added a new captcha verification system to their login auth flow, I went back and forth with some tools and libraries trying to find a solution to the problem that doesn't take a full year to login, but unfortunately the best thing I could find is captcha solving services which as you might be thinking are paid API keys that I can't afford, and still they take up to 20 seconds to solve the captcha, so until Riot removes this captcha thing or goes to a different approach that doesn't completely kill my login algorithm, this repository will be archived, I'm very upset writing this since I wrote a ton of new features and UI changes that were very close to being finished and now they're of no use, farewell, Guava. And thank you for using it.
+<br/>
+
+
+> ⚠ **Important Notice 30th of April 2023:** I wrote this program as a "fun" project to practice some Tkinter for our Python course at uni, didn't think it would get any attention or be actually used by people, so I didn't take the time to write it in an organized/object-oriented manner, it's mostly jank and spaghetti so, it's getting a rewrite as soon as possible, all the known bugs will be fixed, the code would be more readable and organized in more than one file, a handful of QoL features will be added like summoner details, login shortcuts, list reorder and much more, I started. Still, it's going to take a while, since I'm most of the time either studying for college or in campus, my free time is limited, but I'll try my best. Thanks for using Guava 💛
 <br/>
 
 <p align="center">
