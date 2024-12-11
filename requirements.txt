@@ -28,7 +28,7 @@ PyJWT==2.6.0
 pyperclip==1.8.2
 pytz==2023.3
 pywin32==306
-requests==2.30.0
+requests==2.31.0
 tinydb==4.7.1
 tkextrafont==0.6.3
 twilio==8.1.0
